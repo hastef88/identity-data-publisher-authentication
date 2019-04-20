@@ -147,6 +147,8 @@ public abstract class AbstractAuthenticationDataPublisher extends AbstractIdenti
             } else {
                 authenticationData.setUsername(user.getAuthenticatedSubjectIdentifier());
             }
+        } else if (context.getSubject() != null && StringUtils.isNotBlank(context.getSubject().getUserName())) {
+            authenticationData.setUsername(context.getSubject().getUserName());
         }
 
         Object isFederatedObj = params.get(FrameworkConstants.AnalyticsAttributes.IS_FEDERATED);
